@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript">
-        var timerStart = Date.now();
-    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>pthFactor</title>
@@ -12,13 +9,5 @@
 <body>
     <script src="main.js"></script>
     <script src="tests.js"></script>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log("Time until DOMready: ", Date.now() - timerStart);
-        });
-        window.onload = function() {
-            console.log("Time until everything loaded: ", Date.now() - timerStart);
-        };
-    </script>
 </body>
 </html>

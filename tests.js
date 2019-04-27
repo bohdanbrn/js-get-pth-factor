@@ -6,22 +6,23 @@
  * @param {number} n
  * @param {number} p
  * @param {number} expect
+ *
+ * @return {object}
  */
 function pthFactorTest(n, p, expect) {
     try {
         let result = pthFactor(n, p);
 
         if (result === expect) {
-            return {success: `Success. Expect ${expect}, result = ${result}`}
+            return { success: `Success. Expect ${expect}, result = ${result}` };
+        } else {
+            return {
+                error: `Error. Expect ${expect}, but result is ${result}`
+            };
         }
-        else {
-            return {error: `Error. Expect ${expect}, but result is ${result}`}
-        }
+    } catch (error) {
+        return { error: error };
     }
-    catch(error) {
-        return {error: error};
-    }
-
 }
 
 // prepare data for tests
@@ -35,7 +36,7 @@ let testCases = [
     { n: 866421317361600, p: 26881, expect: 0 },
     { n: 866421317361600, p: 26880, expect: 866421317361600 },
     { n: 100000000000000, p: 200, expect: 160000000000 },
-    { n: 99980000016, p: 56, expect: 438508772 },
+    { n: 99980000016, p: 56, expect: 438508772 }
 ];
 
 // array with error tests
@@ -44,13 +45,14 @@ let errors = [];
 let success = [];
 
 // RUN TESTS
+let testTimeStart = Date.now();
+
 testCases.forEach(function(item) {
     let test = pthFactorTest(item.n, item.p, item.expect);
 
     if (test.error) {
         errors.push(test.error);
-    }
-    else if (test.success){
+    } else if (test.success) {
         success.push(test.success);
     }
 });
@@ -63,3 +65,6 @@ errors.forEach(function(item) {
 success.forEach(function(item) {
     console.log(item);
 });
+
+let testRunTime = Date.now() - testTimeStart;
+console.log(`Tests run time: ${testRunTime}ms`);

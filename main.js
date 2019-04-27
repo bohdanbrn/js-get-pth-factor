@@ -1,15 +1,17 @@
 "use strict";
 
 /**
- * Get 'pthFactor' for number
+ * Get 'pth factor' for number
  * @param {number} n
  * @param {number} p
- * 
+ *
  * @return {number}
  */
 function pthFactor(n, p) {
     if (!Number.isInteger(n) || !Number.isInteger(p)) {
-        throw new Error(`Function parameters should be number. n = ${typeof n}, p = ${typeof p}`);
+        throw new Error(
+            `Function parameters should be number. n = ${typeof n}, p = ${typeof p}`
+        );
     }
 
     // TODO (maybe restore)
@@ -25,23 +27,21 @@ function pthFactor(n, p) {
 
     if (p < factors.length) {
         return factors[p];
-    }
-    else {
+    } else {
         return 0;
     }
 }
 
-
 /**
  * Find divisors (factors) of natural numbers for a number (by factorization)
  * @param {number} n
- * 
+ *
  * @return {array}
  */
 function findNumberDivisors(n) {
     var divisors = [];
     var i = 1;
-    
+
     while (i <= Math.sqrt(n)) {
         if (n % i === 0) {
             divisors.push(i);
@@ -50,7 +50,7 @@ function findNumberDivisors(n) {
     }
 
     for (var j = i - 1; j > 0; j--) {
-        if ((j != n / j) && (n % j === 0)) {
+        if (j != n / j && n % j === 0) {
             divisors.push(n / j);
         }
     }
@@ -58,23 +58,30 @@ function findNumberDivisors(n) {
     return divisors;
 }
 
-
 /**
  * Check if the number is in range
  * @param {number} number
  * @param {number} min
  * @param {number} max
- * 
+ *
  * @return {boolean}
  */
 function checkNumberRange(number, min, max) {
-    if (!Number.isInteger(number) || !Number.isInteger(min) || !Number.isInteger(max)) {
-        throw new Error(`Function parameters should be number, but number = ${typeof number}, min = ${typeof min}, max = ${typeof max}`);
+    if (
+        !Number.isInteger(number) ||
+        !Number.isInteger(min) ||
+        !Number.isInteger(max)
+    ) {
+        throw new Error(
+            `Function parameters should be number, but number = ${typeof number}, min = ${typeof min}, max = ${typeof max}`
+        );
     }
 
     if (max < min) {
-        throw new Error(`Parameter "max" should be bigger then "min", but ${max} < ${min}`);
+        throw new Error(
+            `Parameter "max" should be bigger then "min", but ${max} < ${min}`
+        );
     }
-    
-    return (number >= min && number <= max);
+
+    return number >= min && number <= max;
 }
